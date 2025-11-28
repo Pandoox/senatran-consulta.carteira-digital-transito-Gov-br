@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  
+  <meta name="viewport" 
+      content="width=device-width, 
+      initial-scale=1.0, 
+      minimum-scale=1.0, 
+      maximum-scale=1.0, 
+      user-scalable=no, 
+      viewport-fit=cover">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+
+  <link rel="icon" href="/staticcnh/favicon.png" type="image/png" />
+  <title>CDT</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #f2f2f2;
+      font-family: sans-serif;
+      overscroll-behavior: contain;
+      -webkit-user-select: none;
+      user-select: none;
+      touch-action: pan-x pan-y;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #f2f2f2;
+    }
+
+    /* 🔵 TOPBAR */
+    .top-bar {
+      width: 100%;
+      background: #001F5C;
+      color: #f2f2f2;
+      padding: 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+      overflow: hidden;
+    }
+    .left {
+      display: flex;
+      gap: 12px;
+    }
+    .back-btn {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.20);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .arrow-left {
+      color: #f2f2f2;
+      font-size: 22px;
+      font-weight: 600;
+      margin-left: -2px;
+    }
+    .title { font-size: 18px; }
+    .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; display: block; }
+
+    .menu-pontos {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+    .menu-pontos .ponto {
+      width: 5px;
+      height: 5px;
+      background: #f2f2f2;
+      border-radius: 50%;
+    }
+
+    .center-info {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #00245c;
+    }
+
+    /* ÁREA CNH */
+    .rg-area {
+      flex-grow: 1;
+      min-height: 550px;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      position: relative;
+      min-height: auto;
+      padding-top: 120px;
+    }
+    .rg-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+    .rg-img {
+      width: auto;
+      height: auto;
+      max-width: 120%;
+      max-height: 120%;
+      object-fit: contain;
+      display: block;
+      transform: rotate(90deg);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* FOOTER */
+    .footer {
+      position: fixed;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px 10px;
+      background:#00245c;
+      border-top: 1px solid #00245c;
+      z-index: 10;
+    }
+    .footer img {
+      width: 35px;
+      height: 35px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+    .footer img.active { opacity: 1; }
+
+    #loader {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e6f6ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 999;
+      display: none;
+    }
+@media screen and (min-width: 1024px) {
+  .rg-area {
+    display: flex;
+    align-items: center;       /* centraliza verticalmente */
+    justify-content: center;   /* centraliza horizontalmente */
+    min-height: calc(100vh - 160px); /* altura total menos topbar (~80px) e footer (~80px) */
+    padding: 0;                /* remove espaçamentos extras */
+  }
+
+  .rg-wrapper {
+    margin: 0;                 /* sem margem extra */
+  }
+
+  .rg-img {
+    max-width: 80%;
+    max-height: 80%;
+    transform: rotate(0deg);   /* opcional: não rotacionar no desktop */
+  }
+
+  .footer {
+    bottom: 0;                 /* footer fixo no fundo */
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+
+<div id="loader">🔄 Atualizando...</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="left">
+    <a href="indexcnhtelameio.html" class="back-btn">
+      <span class="arrow-left">‹</span>
+    </a>
+    <div>
+      <span class="title">HABILITAÇÃO</span><br>
+      <span class="sub" id="dataAtualizacao">Atualizado em --/--/---- --:--</span>
+    </div>
+  </div>
+  <div class="menu-pontos">
+    <span class="ponto"></span><span class="ponto"></span><span class="ponto"></span>
+  </div>
+</div>
+
+<span class="center-info">Verifique Autenticidade do QR Code com o app</span>
+
+<!-- ÁREA CNH -->
+<div class="rg-area" id="rgArea">
+  <div class="rg-wrapper">
+    <img class="rg-img" id="rgImg" src="" alt="CNH Digital" />
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <img id="btnRG1" src="/staticcnh/usuario.png" class="active" alt="Frente" />
+  <img id="btnRG2" src="/staticcnh/id-card_88591.png" alt="Verso" />
+  <img id="btnRG3" src="/staticcnh/google-docs.png" alt="QR" />
+  <img id="btnRG4" src="/staticcnh/qr-code.png" alt="Observações" />
+</div>
+
+<script>
+  // CPF e usuário logado (injetados pelo backend Flask)
+// Recupera usuário logado do localStorage
+const user = JSON.parse(localStorage.getItem("cnhUsuarioLogado"));
+
+if (!user) {
+  alert("Faça login novamente.");
+  window.location.href = "index2.html";
+}
+
+// Usa as imagens salvas no cnh.js
+const imagens = user.imagens;
+
+
+  let indexAtual = 0;
+  let rotacaoAtual = 90;
+
+  const rgImg = document.getElementById('rgImg');
+  const rgArea = document.getElementById('rgArea');
+
+  // Aplica rotação inicial
+  function aplicarRotacao() {
+    rgImg.style.transform = `rotate(${rotacaoAtual}deg)`;
+  }
+
+  // Troca imagem com animação
+  function trocarImagem(novoIndex) {
+    indexAtual = novoIndex;
+    rgImg.style.opacity = 0;
+    setTimeout(() => {
+      rgImg.src = imagens[indexAtual];
+      rotacaoAtual = 90;
+      aplicarRotacao();
+      rgImg.style.opacity = 1;
+    }, 200);
+  }
+
+  // Inicializa primeira imagem
+  rgImg.onload = aplicarRotacao;
+  rgImg.src = imagens[0];
+
+  // Swipe lateral (arrastar para trocar)
+  let startX = 0;
+  rgArea.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  rgArea.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - startX;
+    if (Math.abs(deltaX) > 50) {
+      if (deltaX < 0) indexAtual = (indexAtual + 1) % imagens.length;
+      else indexAtual = (indexAtual - 1 + imagens.length) % imagens.length;
+      trocarImagem(indexAtual);
+    }
+  });
+
+  // Atualizar data/hora
+  function atualizarDataHora() {
+    const agora = new Date();
+    const dia = String(agora.getDate()).padStart(2, '0');
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const ano = agora.getFullYear();
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+    const segundos = String(agora.getSeconds()).padStart(2, '0');
+
+    document.getElementById('dataAtualizacao').textContent =
+      `Atualizado em ${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}`;
+  }
+
+  window.addEventListener('load', atualizarDataHora);
+
+  // Botões do footer
+  document.getElementById('btnRG1').onclick = () => { trocarImagem(0); ativarBotao('btnRG1'); };
+  document.getElementById('btnRG2').onclick = () => { trocarImagem(1); ativarBotao('btnRG2'); };
+  document.getElementById('btnRG3').onclick = () => { trocarImagem(2); ativarBotao('btnRG3'); };
+  document.getElementById('btnRG4').onclick = () => { trocarImagem(3); ativarBotao('btnRG4'); };
+
+  function ativarBotao(id) {
+    document.querySelectorAll('.footer img').forEach(img => img.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Pull-to-refresh
+  let startY = 0;
+  let isRefreshing = false;
+
+  document.addEventListener('touchstart', e => {
+    if (window.scrollY === 0) {
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', e => {
+    const endY = e.changedTouches[0].clientY;
+    const deltaY = endY - startY;
+
+    if (deltaY > 80 && !isRefreshing && window.scrollY === 0) {
+      isRefreshing = true;
+      const loader = document.getElementById('loader');
+      loader.style.display = 'block';
+
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+    }
+  }, { passive: true });
+
+
+
+
+
+
+
+
+
+  function detectarDispositivo() {
+    const largura = window.innerWidth;
+    const altura = window.innerHeight;
+    const body = document.body;
+
+    // Remove classes antigas
+    body.classList.remove('mobile', 'tablet', 'desktop');
+
+    // Aplica classe conforme largura
+    if (largura <= 768) {
+      body.classList.add('mobile');
+    } else if (largura <= 1024) {
+      body.classList.add('tablet');
+    } else {
+      body.classList.add('desktop');
+    }
+  }
+
+  // Detecta ao carregar
+  window.addEventListener('load', detectarDispositivo);
+
+  // Detecta ao redimensionar
+  window.addEventListener('resize', detectarDispositivo);
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" href="/staticcnh/favicon.png" type="image/png" />
+   <title>CDT</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+       touch-action: pan-x pan-y;
+    }
+    .topbar {
+      width: 100%;
+      background: #001F5C;
+      color: white;
+      padding: 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+    }
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* espaço entre ícone e título */
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+}
+.right-group {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* distância entre sino e perfil */
+}
+
+.bell {
+  font-size: 22px;
+  color: #fff; /* agora fica branco */
+  cursor: pointer;
+}
+
+
+
+
+    .profile {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 2px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 0 16px; /* espaçamento lateral */
+  box-sizing: border-box;
+  align-items: center; /* centraliza os cards */
+}
+
+    .card {
+      width: 100%;
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .card-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .card-text span {
+      font-size: 14px;
+      font-weight: normal;
+      margin-top: 3px;
+    }
+
+    .icon img {
+      width: 55px;
+    }
+
+    .green { background: #06a561; }
+    .yellow { background: #fecb00; color: #333; }
+    .blue { background: #0c2ea0; }
+    .lightblue { background: #5bb9ff; }
+
+      @media (max-width: 600px) {
+      .container {
+        margin: 20px auto;
+        gap: 20px;
+        padding: 0 10px;
+      }
+      .card {
+        padding: 18px;
+        border-radius: 14px;
+      }
+      .icon img {
+        width: 48px;
+      }
+      .card-text {
+        font-size: 16px;
+      }
+      .card-text span {
+        font-size: 13px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .container {
+        max-width: 900px;
+      }
+      .card {
+        padding: 30px;
+        border-radius: 18px;
+      }
+      .icon img {
+        width: 70px;
+      }
+      .card-text {
+        font-size: 20px;
+      }
+      .card-text span {
+        font-size: 16px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="left-group">
+    <div class="menu-icon">☰</div>
+    <div class="title">CDT</div>
+  </div>
+  <div class="right-group">
+     <i class="fa-solid fa-bell bell"></i>
+    <div class="profile">F</div>
+  </div>
+</div>
+
+
+  <div class="container">
+
+<div id="cardCondutor" class="card green" style="padding:0; overflow:hidden; cursor:pointer;">
+  <img src="/staticcnh/bg_condutor.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
+</div>
+
+
+
+
+    <div class="card green" style="padding:0; overflow:hidden;">
+      <img src="/staticcnh/bg_veiculos.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
+    </div>
+
+    <div class="card green" style="padding:0; overflow:hidden;">
+      <img src="/staticcnh/bg_infracoes.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
+    </div>
+
+    <div class="card green" style="padding:0; overflow:hidden;">
+      <img src="/staticcnh/bg_educacao.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
+    </div>
+
+  </div>
+
+
+
+<div id="refreshLoader" style="
+  display:none;
+  position:fixed;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+ 
+  color:#fff;
+  padding:8px 16px;
+  border-radius:20px;
+  font-size:14px;
+  z-index:999;
+">
+🔄 Atualizando...
+</div>
+
+  <script>
+
+
+
+
+  // Quando clicar no card, vai para a tela da CNH
+  document.getElementById("cardCondutor").addEventListener("click", () => {
+    // Verifica se o usuário está logado
+    const user = localStorage.getItem("cnhUsuarioLogado");
+    if (!user) {
+      alert("Faça login novamente.");
+      window.location.href = "index2.html"; // volta para login
+      return;
+    }
+    // Vai para a tela da CNH
+    window.location.href = "indexcnh4.html";
+  });
+
+
+
+
+let startY = 0;
+let isRefreshing = false;
+
+document.addEventListener('touchstart', e => {
+  if (window.scrollY === 0) {
+    startY = e.touches[0].clientY;
+  }
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  const endY = e.changedTouches[0].clientY;
+  const deltaY = endY - startY;
+
+  if (deltaY > 80 && !isRefreshing && window.scrollY === 0) {
+    isRefreshing = true;
+    const loader = document.getElementById('refreshLoader');
+    loader.style.display = 'block';
+
+    // simula atualização
+    setTimeout(() => {
+      location.reload(); // recarrega a página
+    }, 1000);
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>

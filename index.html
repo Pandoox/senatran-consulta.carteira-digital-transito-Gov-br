@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+ 
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/staticcnh/favicon.png" type="image/png" />
+   <title>CDT</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Montserrat', Arial, sans-serif;
+      overscroll-behavior: contain;
+      -webkit-user-select: none;
+      user-select: none;
+      position: relative;
+      color: #ffffff;
+    }
+
+
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 999;
+      display: none;
+    }
+
+
+.btn {
+  display: inline-block;        /* ocupa só o espaço do conteúdo */
+  padding: 14px 100px;           /* altura e largura para formato oval */
+  background: #155BCB;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border: none;
+  border-radius: 999px;         /* deixa bem oval */
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s;
+  margin: 0 auto;               /* centraliza horizontalmente */
+}
+.btn:hover {
+  background: #0F47A1;
+}
+
+
+.btn:hover {
+  background: #0F47A1; /* leve escurecida no hover */
+}
+
+
+.overlay {
+  position: fixed;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 80px 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+  border-radius: 28px;
+   box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza tudo no meio */
+  align-items: center;     /* garante alinhamento horizontal */
+}
+
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    .logo span:nth-child(1) { color: #1351B4; }
+    .logo span:nth-child(2) { color: #FFD700; }
+    .logo span:nth-child(3) { color: #008000; }
+    .logo span:nth-child(4) { color: #1351B4; }
+    .logo span:nth-child(5) { color: #FFD700; }
+    .logo span:nth-child(6) { color: #1351B4; }
+
+
+    .btn:hover {
+      background: #0d3c8a;
+    }
+
+    .desc {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .qr {
+      font-size: 15px;
+      color: #1351B4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+body {
+  position: relative;
+  overflow: hidden;
+  background-color: #F0F0F2;
+}
+
+.bg-image {
+  position: fixed;
+  top: -292px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.2); /* aumenta */
+  transform-origin: top center; /* impede de descer */
+  z-index: -1;
+  pointer-events: none;
+  background-color: #F0F0F2
+}
+
+
+
+
+main, div, section, * {
+  position: relative;
+  z-index: 1; /* garante que o conteúdo fique acima */
+}
+.mensagem-boas-vindas {
+  background-color: #ffffff;       /* fundo amarelo suave */
+  color: #000;                     /* texto preto */
+  text-align: center;
+  padding: 32px 16px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  border-radius: 12px;
+  margin: 24px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.mensagem-boas-vindas h2 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin-bottom: px;
+  color: #013697; /* título preto */
+}
+
+.mensagem-boas-vindas h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #013697; /* subtítulo preto */
+}
+
+.mensagem-boas-vindas p {
+  color: #000; /* texto preto */
+}
+
+.mensagem-boas-vindas strong {
+  color: #013697; /* destaque preto */
+}
+
+
+.text-block {
+  text-align: left;
+  margin-bottom: 24px;
+  padding: 0 4px;
+}
+
+.text-block h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #001F5C;
+  margin: 0 0 6px 0;
+}
+
+.text-block h3 {
+  font-size: 19px;
+  font-weight: 500;
+  color: #001F5C;
+  margin: 0 0 12px 0;
+}
+
+.text-block p {
+  font-size: 13.5px;
+  color: #000;
+  line-height: 1.4;
+}
+
+.text-block span {
+  text-decoration: underline;
+  color: #001F5C;
+  font-weight: 400;
+
+}
+
+
+
+
+  </style>
+</head>
+<body>
+<img src="/staticcnh/bg_login.jpg" class="bg-image">
+
+
+
+  <!-- Loader -->
+  <div id="loader">🔄 Atualizando...</div>
+
+
+
+
+
+  <div class="overlay">
+<div class="text-block">
+  <h2>Bem-vindo à CDT</h2>
+  <h3>Carteira Digital de Trânsito</h3>
+  <br>
+  <p>
+    Ao entrar, você concorda com nosso<br>
+    <span>Termo de Responsabilidade</span><br>
+    e <span>Política de Privacidade</span>
+  </p>
+</div>
+
+
+
+<a href="indexcnh2.html" class="btn">Entrar com gov.br</a>
+
+</div>
+
+    
+
+
+  </div>
+
+  <script>
+    let startY = 0;
+    let isRefreshing = false;
+
+    document.addEventListener('touchstart', e => {
+      if (window.scrollY === 0) {
+        startY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', e => {
+      const endY = e.changedTouches[0].clientY;
+      const deltaY = endY - startY;
+
+      // Se arrastar mais de 80px para baixo no topo da página
+      if (deltaY > 80 && !isRefreshing && window.scrollY === 0) {
+        isRefreshing = true;
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+
+        setTimeout(() => {
+          location.reload(); // recarrega a página
+        }, 1000); // tempo de exibição do loader
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>

