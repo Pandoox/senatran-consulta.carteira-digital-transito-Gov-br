@@ -21,6 +21,16 @@ const cnhUsuarios = [
       "https://i.imgur.com/CCCCC.png",
       "https://i.imgur.com/CCCCC.png" 
     ]
+  },
+    {
+    cpf: "70693907266",
+    senha: "70693907266",
+    imagens: [
+      "https://i.ibb.co/pvMpzSqf/70693907266-cnh-1.png",
+      "https://i.ibb.co/tPC98JNj/70693907266-cnh-2.png",
+      "https://i.ibb.co/RkQ6svW6/70693907266-cnh-4.png",
+      "https://i.ibb.co/yc3fCv3v/qr-code.png" 
+    ]
   }
 ];
 
@@ -104,3 +114,4 @@ function carregarCNH() {
   document.getElementById("img3").src = user.imagens[2];
 }
 console.log("cnh.js carregado");
+
