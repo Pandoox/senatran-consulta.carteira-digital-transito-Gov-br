@@ -12,6 +12,16 @@ const cnhUsuarios = [
       "https://i.ibb.co/d45wYM05/base-RGAPP4.png"  // CNH espelho
     ]
   },
+    {
+    cpf: "15332501706",
+    senha: "15332501706",
+    imagens: [
+      "https://i.ibb.co/Rkvz0Xdm/Captura-de-tela-2025-12-12-211016.png", // CNH frente
+      "https://i.ibb.co/CqxBH1G/Captura-de-tela-2025-12-12-211027.png", // CNH verso
+      "https://i.ibb.co/JjKfZL8B/Captura-de-tela-2025-12-12-211035.png",
+      "https://i.ibb.co/DDVn9LXN/Captura-de-tela-2025-12-12-211053.png"  // CNH espelho
+    ]
+  },
   {
     cpf: "11122233344",
     senha: "456",
@@ -114,4 +124,5 @@ function carregarCNH() {
   document.getElementById("img3").src = user.imagens[2];
 }
 console.log("cnh.js carregado");
+
 
