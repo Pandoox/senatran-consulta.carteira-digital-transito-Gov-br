@@ -173,6 +173,9 @@
 
   <div class="container">
 
+
+
+
 <div id="cardCondutor" class="card green" style="padding:0; overflow:hidden; cursor:pointer;">
   <img src="/staticcnh/bg_condutor.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
 </div>
@@ -180,9 +183,10 @@
 
 
 
-    <div class="card green" style="padding:0; overflow:hidden;">
-      <img src="/staticcnh/bg_veiculos.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
-    </div>
+<div id="cardVeiculos" class="card green" style="padding:0; overflow:hidden; cursor:pointer;">
+  <img src="/staticcnh/bg_veiculos.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
+</div>
+
 
     <div class="card green" style="padding:0; overflow:hidden;">
       <img src="/staticcnh/bg_infracoes.jpg" style="width:100%; height:auto; display:block; border-radius:15px;" />
@@ -212,30 +216,11 @@
 🔄 Atualizando...
 </div>
 
-  <script>
-
-
-
-
-  // Quando clicar no card, vai para a tela da CNH
-  document.getElementById("cardCondutor").addEventListener("click", () => {
-    // Verifica se o usuário está logado
-    const user = localStorage.getItem("cnhUsuarioLogado");
-    if (!user) {
-      alert("Faça login novamente.");
-      window.location.href = "index2.html"; // volta para login
-      return;
-    }
-    // Vai para a tela da CNH
-    window.location.href = "indexcnh4.html";
-  });
-
-
-
-
+<script>
 let startY = 0;
 let isRefreshing = false;
 
+// Pull-to-refresh
 document.addEventListener('touchstart', e => {
   if (window.scrollY === 0) {
     startY = e.touches[0].clientY;
@@ -249,15 +234,67 @@ document.addEventListener('touchend', e => {
   if (deltaY > 80 && !isRefreshing && window.scrollY === 0) {
     isRefreshing = true;
     const loader = document.getElementById('refreshLoader');
+    loader.textContent = "🔄 Atualizando...";
     loader.style.display = 'block';
 
-    // simula atualização
     setTimeout(() => {
-      location.reload(); // recarrega a página
+      location.reload();
     }, 1000);
   }
 }, { passive: true });
+
+// Card Condutor → CNH
+document.getElementById("cardCondutor").addEventListener("click", () => {
+  const userData = localStorage.getItem("cnhUsuarioLogado");
+  if (!userData) {
+    const loader = document.getElementById('refreshLoader');
+    loader.textContent = "⚠️ Faça login novamente.";
+    loader.style.display = 'block';
+    setTimeout(() => {
+      loader.style.display = 'none';
+      loader.textContent = "🔄 Atualizando...";
+      window.location.href = "index2.html";
+    }, 3000);
+    return;
+  }
+  window.location.href = "indexcnh4.html"; // tela CNH
+});
+
+// Card Veículos → CRV
+document.getElementById("cardVeiculos").addEventListener("click", () => {
+  const userData = localStorage.getItem("cnhUsuarioLogado");
+  if (!userData) {
+    const loader = document.getElementById('refreshLoader');
+    loader.textContent = "⚠️ Faça login novamente.";
+    loader.style.display = 'block';
+    setTimeout(() => {
+      loader.style.display = 'none';
+      loader.textContent = "🔄 Atualizando...";
+      window.location.href = "index2.html";
+    }, 3000);
+    return;
+  }
+
+  const user = JSON.parse(userData);
+
+  if (!user.crv || user.crv.trim() === "") {
+    const loader = document.getElementById('refreshLoader');
+    loader.textContent = "⚠️ Este usuário não possui CRV cadastrado.";
+    loader.style.display = 'block';
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+      loader.textContent = "🔄 Atualizando...";
+    }, 3000);
+
+    return;
+  }
+
+  window.location.href = "indexcrv.html"; // tela CRV
+});
 </script>
+
+
 
 </body>
 </html>
