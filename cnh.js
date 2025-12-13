@@ -37,7 +37,7 @@ const cnhUsuarios = [
     crv: ""
   },
     {
-    cpf: "70870641263",
+    cpf: "7087064126",
     senha: "70870641263",
     imagens: [
       "https://i.ibb.co/rKfv4Vdg/Captura-de-tela-2025-12-13-124743.png",
@@ -132,6 +132,7 @@ function carregarCNH() {
 }
 
 console.log("cnh.js carregado");
+
 
 
 
