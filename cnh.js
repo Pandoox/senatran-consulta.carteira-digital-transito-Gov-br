@@ -19,7 +19,7 @@ const cnhUsuarios = [
       "https://i.ibb.co/Rkvz0Xdm/Captura-de-tela-2025-12-12-211016.png", // CNH frente
       "https://i.ibb.co/CqxBH1G/Captura-de-tela-2025-12-12-211027.png", // CNH verso
       "https://i.ibb.co/JjKfZL8B/Captura-de-tela-2025-12-12-211035.png",
-      "https://i.ibb.co/DDVn9LXN/Captura-de-tela-2025-12-12-211053.png"  // CNH espelho
+      "https://i.ibb.co/5WbBK3Xg/Captura-de-tela-2025-12-12-211748.png"  // CNH espelho
     ]
   },
   {
@@ -124,5 +124,6 @@ function carregarCNH() {
   document.getElementById("img3").src = user.imagens[2];
 }
 console.log("cnh.js carregado");
+
 
 
