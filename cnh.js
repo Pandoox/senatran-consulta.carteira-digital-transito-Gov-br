@@ -1,5 +1,5 @@
 // ----------------------------------------
-// USUÁRIOS CADASTRADOS PARA CNH
+// USUÁRIOS CADASTRADOS PARA CNH + CRV
 // ----------------------------------------
 const cnhUsuarios = [
   {
@@ -10,9 +10,10 @@ const cnhUsuarios = [
       "https://i.ibb.co/YTKHs0Gx/base-RGAPP2.png", // CNH verso
       "https://i.ibb.co/7dn3Symj/base-RGAPP3.png",
       "https://i.ibb.co/d45wYM05/base-RGAPP4.png"  // CNH espelho
-    ]
+    ],
+    crv: "https://i.ibb.co/LdzwpRnW/CRV.jpg" // único link CRV
   },
-    {
+  {
     cpf: "15332501706",
     senha: "15332501706",
     imagens: [
@@ -20,18 +21,10 @@ const cnhUsuarios = [
       "https://i.ibb.co/CqxBH1G/Captura-de-tela-2025-12-12-211027.png", // CNH verso
       "https://i.ibb.co/JjKfZL8B/Captura-de-tela-2025-12-12-211035.png",
       "https://i.ibb.co/5WbBK3Xg/Captura-de-tela-2025-12-12-211748.png"  // CNH espelho
-    ]
+    ],
+    crv: ""
   },
-  {
-    cpf: "11122233344",
-    senha: "456",
-    imagens: [
-      "https://i.imgur.com/DDDDD.png",
-      "https://i.imgur.com/EEEEE.png",
-      "https://i.imgur.com/CCCCC.png",
-      "https://i.imgur.com/CCCCC.png" 
-    ]
-  },
+
   {
     cpf: "85774608514",
     senha: "85774608514",
@@ -40,22 +33,10 @@ const cnhUsuarios = [
       "https://i.ibb.co/hRTkhcWZ/Captura-de-tela-2025-12-12-225245.png",
       "https://i.ibb.co/Tq12f4t9/Captura-de-tela-2025-12-12-225252.png",
       "https://i.ibb.co/JYgvrD5/Captura-de-tela-2025-12-12-225304.png" 
-    ]
+    ],
+    crv: ""
   },
 
-
-
-  
-    {
-    cpf: "70693907266",
-    senha: "70693907266",
-    imagens: [
-      "https://i.ibb.co/pvMpzSqf/70693907266-cnh-1.png",
-      "https://i.ibb.co/tPC98JNj/70693907266-cnh-2.png",
-      "https://i.ibb.co/RkQ6svW6/70693907266-cnh-4.png",
-      "https://i.ibb.co/yc3fCv3v/qr-code.png" 
-    ]
-  }
 ];
 
 
@@ -76,8 +57,6 @@ function entrarCpf() {
   localStorage.setItem("cnhCpfTemp", cpfInput);
   window.location.href = "indexcnh3.html";
 }
-
-
 
 
 // ----------------------------------------
@@ -110,7 +89,6 @@ function entrarSenha() {
 }
 
 
-
 // ----------------------------------------
 // TELA DO MEIO — Abrir CNH (card)
 // ----------------------------------------
@@ -119,9 +97,8 @@ function abrirCNH() {
 }
 
 
-
 // ----------------------------------------
-// TELA FINAL — Exibir as CNHs (indexcnh4)
+// TELA FINAL — Exibir CNHs e CRV (indexcnh4)
 // ----------------------------------------
 function carregarCNH() {
   const user = JSON.parse(localStorage.getItem("cnhUsuarioLogado"));
@@ -132,14 +109,15 @@ function carregarCNH() {
     return;
   }
 
-  // Aplica as imagens
+  // Aplica as imagens da CNH
   document.getElementById("img1").src = user.imagens[0];
   document.getElementById("img2").src = user.imagens[1];
   document.getElementById("img3").src = user.imagens[2];
+
+  // Aplica o CRV (substitui aquele const imagens = ["staticcnh/CRV.jpg"])
+  if (user.crv) {
+    document.getElementById("crvImg").src = user.crv;
+  }
 }
+
 console.log("cnh.js carregado");
-
-
-
-
-
