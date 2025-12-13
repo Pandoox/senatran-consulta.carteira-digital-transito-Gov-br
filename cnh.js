@@ -32,7 +32,7 @@ const cnhUsuarios = [
       "https://i.imgur.com/CCCCC.png" 
     ]
   },
-
+  {
     cpf: "85774608514",
     senha: "85774608514",
     imagens: [
@@ -138,6 +138,7 @@ function carregarCNH() {
   document.getElementById("img3").src = user.imagens[2];
 }
 console.log("cnh.js carregado");
+
 
 
 
