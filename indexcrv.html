@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  
+  <meta name="viewport" 
+      content="width=device-width, 
+      initial-scale=1.0, 
+      minimum-scale=1.0, 
+      maximum-scale=1.0, 
+      user-scalable=no, 
+      viewport-fit=cover">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <link rel="icon" href="/staticcnh/favicon.png" type="image/png" />
+  <title>CDT</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #f2f2f2;
+      font-family: sans-serif;
+      overscroll-behavior: contain;
+      -webkit-user-select: none;
+      user-select: none;
+      touch-action: pan-x pan-y;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #f2f2f2;
+    }
+
+    /* 🔵 TOPBAR */
+    .top-bar {
+      width: 100%;
+      background: #001F5C;
+      color: #f2f2f2;
+      padding: 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      border-bottom-left-radius: 35px;
+      border-bottom-right-radius: 35px;
+      overflow: hidden;
+    }
+    .left {
+      display: flex;
+      gap: 12px;
+    }
+    .back-btn {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.20);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .arrow-left {
+      color: #f2f2f2;
+      font-size: 22px;
+      font-weight: 600;
+      margin-left: -2px;
+    }
+    .title { font-size: 18px; }
+    .sub { font-size: 12px; opacity: 0.85; margin-top: 2px; display: block; }
+
+    .menu-pontos {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+    .menu-pontos .ponto {
+      width: 5px;
+      height: 5px;
+      background: #f2f2f2;
+      border-radius: 50%;
+    }
+
+    .center-info {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #00245c;
+    }
+
+    /* ÁREA CNH */
+    .rg-area {
+      flex-grow: 1;
+      min-height: 550px;
+      background: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      position: relative;
+      min-height: auto;
+      
+    }
+    .rg-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+.rg-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: zoom-in;
+}
+
+    /* FOOTER */
+    .footer {
+      position: fixed;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 20px 10px;
+      background:#00245c;
+      border-top: 1px solid #00245c;
+      z-index: 10;
+    }
+    .footer img {
+      width: 35px;
+      height: 35px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+    .footer img.active { opacity: 1; }
+
+    #loader {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e6f6ff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      z-index: 999;
+      display: none;
+    }
+@media screen and (min-width: 1024px) {
+  .rg-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 160px);
+    padding: 0;
+  }
+
+  .rg-wrapper {
+    margin: 0;
+  }
+
+  .rg-img {
+    max-width: 80%;
+    max-height: 80%;
+    transform: rotate(0deg);
+  }
+
+  .footer {
+    bottom: 0;
+  }
+}
+.rg-img.zoomed {
+  transform: scale(1.5) rotate(0deg); /* zoom + rotação */
+  cursor: zoom-out;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div id="loader">🔄 Atualizando...</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="left">
+    <a href="indexcnhtelameio.html" class="back-btn">
+      <span class="arrow-left">‹</span>
+    </a>
+    <div>
+      <span class="title">DOCUMENTO CRLV</span><br>
+      <span class="sub" id="dataAtualizacao">Atualizado em --/--/---- --:--</span>
+    </div>
+  </div>
+  <div class="menu-pontos">
+    <span class="ponto"></span><span class="ponto"></span><span class="ponto"></span>
+  </div>
+</div>
+
+<span class="center-info">Verifique Autenticidade do QR Code com o app</span>
+
+<!-- ÁREA CNH -->
+<div class="rg-area" id="rgArea">
+  <div class="rg-wrapper">
+    <img class="rg-img" id="rgImg" src="" alt="Documento Digital" />
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <img id="btnRG1" src="staticcnh/usuario.png" class="active" alt="Frente" />
+  <img id="btnRG2" src="staticcnh/id-card_88591.png" alt="Verso" />
+  <img id="btnRG3" src="staticcnh/google-docs.png" alt="QR" />
+  <img id="btnRG4" src="staticcnh/qr-code.png" alt="Observações" />
+</div>
+
+<script>
+  let rotacaoAtual = 0; // sem rotação
+
+  const rgImg = document.getElementById('rgImg');
+  const rgArea = document.getElementById('rgArea');
+
+  rgImg.style.transformOrigin = 'top left';
+
+  function aplicarTransform() {
+    const scale = rgImg.classList.contains('zoomed') ? 1.5 : 1;
+    rgImg.style.transform = `scale(${scale}) rotate(${rotacaoAtual}deg)`;
+  }
+
+  // Carregar CRV do usuário logado
+  function carregarCRV() {
+    const userData = localStorage.getItem("cnhUsuarioLogado");
+    if (!userData) {
+      alert("Faça login novamente.");
+      window.location.href = "index2.html";
+      return;
+    }
+    const user = JSON.parse(userData);
+
+    if (!user.crv) {
+      alert("Este usuário não possui CRV cadastrado.");
+      return;
+    }
+
+    rgImg.src = user.crv;
+  }
+
+  rgImg.onload = aplicarTransform;
+  carregarCRV();
+
+  rgImg.addEventListener('click', () => {
+    const vaiZoom = !rgImg.classList.contains('zoomed');
+    rgImg.classList.toggle('zoomed');
+
+    if (vaiZoom) {
+      rgArea.style.overflow = 'auto';
+      rgArea.style.alignItems = 'flex-start';
+    } else {
+      rgArea.style.overflow = 'hidden';
+      rgArea.style.alignItems = 'center';
+      rgArea.scrollTop = 0;
+      rgArea.scrollLeft = 0;
+    }
+
+    aplicarTransform();
+  });
+
+  function atualizarDataHora() {
+    const agora = new Date();
+    const dia = String(agora.getDate()).padStart(2, '0');
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const ano = agora.getFullYear();
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+    const segundos = String(agora.getSeconds()).padStart(2, '0');
+
+    document.getElementById('dataAtualizacao').textContent =
+      `Atualizado em ${dia}/${mes}/${ano} - ${horas}:${minutos}:${segundos}`;
+  }
+
+  window.addEventListener('load', atualizarDataHora);
+</script>
+
+
+
+
+</body>
+</html>
