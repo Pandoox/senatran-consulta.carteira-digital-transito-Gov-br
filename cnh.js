@@ -6,7 +6,7 @@ const cnhUsuarios = [
     cpf: "09611768303",
     senha: "09611768303",
     imagens: [
-      "https://i.ibb.co/GfDsgW8w/Imagem-do-Whats-App-de-2025-12-13-s-11-03-19-bd32adc3.jpg", // CNH frente
+      "https://i.ibb.co/xqxXD0Lh/Imagem-do-Whats-App-de-2025-12-13-s-11-03-19-bd32adc3.jpg", // CNH frente
       "https://i.ibb.co/YTKHs0Gx/base-RGAPP2.png", // CNH verso
       "https://i.ibb.co/7dn3Symj/base-RGAPP3.png",
       "https://i.ibb.co/d45wYM05/base-RGAPP4.png"  // CNH espelho
@@ -121,5 +121,6 @@ function carregarCNH() {
 }
 
 console.log("cnh.js carregado");
+
 
 
