@@ -257,29 +257,17 @@ const imagens = user.imagens;
     rgImg.style.transform = `rotate(${rotacaoAtual}deg)`;
   }
 
-function trocarImagem(novoIndex) {
-  indexAtual = novoIndex;
-  rgImg.style.opacity = 0;
-  setTimeout(() => {
-    rgImg.src = imagens[indexAtual];
-    rotacaoAtual = 90;
-    aplicarRotacao();
-    rgImg.style.opacity = 1;
-
-    // 🔹 Se for o QR (índice 2), aplica tamanho menor
-    if (indexAtual === 3) {
-      rgImg.style.width = "350px";
-      rgImg.style.height = "350px";
-      
-    }
-    // 🔹 Para frente/verso, volta ao normal
-    else {
-      rgImg.style.width = "auto";
-      rgImg.style.height = "auto";
-    }
-  }, 200);
-}
-
+  // Troca imagem com animação
+  function trocarImagem(novoIndex) {
+    indexAtual = novoIndex;
+    rgImg.style.opacity = 0;
+    setTimeout(() => {
+      rgImg.src = imagens[indexAtual];
+      rotacaoAtual = 90;
+      aplicarRotacao();
+      rgImg.style.opacity = 1;
+    }, 200);
+  }
 
   // Inicializa primeira imagem
   rgImg.onload = aplicarRotacao;
@@ -381,6 +369,37 @@ function trocarImagem(novoIndex) {
 
   // Detecta ao redimensionar
   window.addEventListener('resize', detectarDispositivo);
+
+
+
+
+
+
+
+
+
+  // Bloqueia atalhos comuns de DevTools
+  document.addEventListener("keydown", function(e) {
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") {
+      e.preventDefault();
+    }
+
+    // Ctrl+U
+    if (e.ctrlKey && e.key.toLowerCase() === "u") {
+      e.preventDefault();
+    }
+  });
+
+  // Bloqueia clique direito (menu de contexto)
+  document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+  });
 </script>
 
 
