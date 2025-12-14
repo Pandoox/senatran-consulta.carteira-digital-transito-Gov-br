@@ -257,17 +257,27 @@ const imagens = user.imagens;
     rgImg.style.transform = `rotate(${rotacaoAtual}deg)`;
   }
 
-  // Troca imagem com animação
-  function trocarImagem(novoIndex) {
-    indexAtual = novoIndex;
-    rgImg.style.opacity = 0;
-    setTimeout(() => {
-      rgImg.src = imagens[indexAtual];
-      rotacaoAtual = 90;
-      aplicarRotacao();
-      rgImg.style.opacity = 1;
-    }, 200);
-  }
+function trocarImagem(novoIndex) {
+  indexAtual = novoIndex;
+  rgImg.style.opacity = 0;
+  setTimeout(() => {
+    rgImg.src = imagens[indexAtual];
+    rotacaoAtual = 90;
+    aplicarRotacao();
+    rgImg.style.opacity = 1;
+
+    // 🔹 Se for a imagem 4 (índice 3), aplica tamanho menor
+    if (indexAtual === 3) {
+      rgImg.style.width = "350px";   // tamanho fixo menor
+      rgImg.style.height = "350px";
+      rgImg.style.transform = "rotate(0deg)"; // opcional, sem rotação
+    } else {
+      // 🔹 Para as outras imagens, volta ao normal
+      rgImg.style.width = "auto";
+      rgImg.style.height = "auto";
+    }
+  }, 200);
+}
 
   // Inicializa primeira imagem
   rgImg.onload = aplicarRotacao;
@@ -340,12 +350,6 @@ const imagens = user.imagens;
 
 
 
-
-
-
-
-
-
   function detectarDispositivo() {
     const largura = window.innerWidth;
     const altura = window.innerHeight;
@@ -372,12 +376,6 @@ const imagens = user.imagens;
 
 
 
-
-
-
-
-
-
   // Bloqueia atalhos comuns de DevTools
   document.addEventListener("keydown", function(e) {
     // F12
@@ -400,6 +398,7 @@ const imagens = user.imagens;
   document.addEventListener("contextmenu", function(e) {
     e.preventDefault();
   });
+
 </script>
 
 
