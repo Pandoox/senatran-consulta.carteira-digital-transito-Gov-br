@@ -288,38 +288,28 @@ main, div, section, * {
 
 
 
+  // Bloqueia atalhos comuns de DevTools
+  document.addEventListener("keydown", function(e) {
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
 
-    // Função que verifica se DevTools está aberto
-function detectarDevTools() {
-  const threshold = 160;
-  if (
-    window.outerWidth - window.innerWidth > threshold ||
-    window.outerHeight - window.innerHeight > threshold
-  ) {
-    // Se detectar diferença (DevTools aberto), redireciona
-    window.location.href = "https://www.google.com";
-  }
-}
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") {
+      e.preventDefault();
+    }
 
-// Verifica a cada 1 segundo
-setInterval(detectarDevTools, 1000);
+    // Ctrl+U
+    if (e.ctrlKey && e.key.toLowerCase() === "u") {
+      e.preventDefault();
+    }
+  });
 
-// Bloqueia alguns atalhos comuns (Ctrl+U, Ctrl+Shift+I, F12)
-document.addEventListener("keydown", function(e) {
-  if (
-    (e.ctrlKey && e.key.toLowerCase() === "u") || // Ctrl+U
-    (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") || // Ctrl+Shift+I
-    (e.key === "F12") // F12
-  ) {
+  // Bloqueia clique direito (menu de contexto)
+  document.addEventListener("contextmenu", function(e) {
     e.preventDefault();
-    window.location.href = "https://www.google.com";
-  }
-});
-
-// Bloqueia clique direito
-document.addEventListener("contextmenu", function(e) {
-  e.preventDefault();
-});
+  });
   </script>
 </body>
 </html>
