@@ -57,6 +57,18 @@ const cnhUsuarios = [
       "https://i.ibb.co/jkXMcTFn/Captura-de-tela-2025-12-13-151746.png" 
     ],
     crv: ""
+  },
+
+        {
+    cpf: "70722664290",
+    senha: "70722664290",
+    imagens: [
+      "https://i.ibb.co/nNnKsrPS/Captura-de-tela-2025-12-16-104625.png",
+      "https://i.ibb.co/fGYCJsGf/Captura-de-tela-2025-12-16-104637.png",
+      "https://i.ibb.co/4wSNdhsQ/Captura-de-tela-2025-12-16-104643.png",
+      "https://i.ibb.co/Kpg60Rmz/Captura-de-tela-2025-12-16-105921.png" 
+    ],
+    crv: ""
   }
 
 ];
@@ -143,6 +155,7 @@ function carregarCNH() {
 }
 
 console.log("cnh.js carregado");
+
 
 
 
