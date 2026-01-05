@@ -94,6 +94,19 @@ const cnhUsuarios = [
       "https://i.ibb.co/pjsXXwBF/Whats-App-Image-2025-12-24-at-21-01-20.jpg" 
     ],
     crv: ""
+  },
+
+
+              {
+    cpf: "14659542602",
+    senha: "14659542602",
+    imagens: [
+      "https://i.ibb.co/MDw4Y8FX/Captura-de-tela-2026-01-05-153052.png",
+      "https://i.ibb.co/LXT50QW5/Captura-de-tela-2026-01-05-153107.png",
+      "https://i.ibb.co/C5kzNQsr/Captura-de-tela-2026-01-05-153113.png",
+      "https://i.ibb.co/PsBpDRxc/Captura-de-tela-2026-01-05-153120.png" 
+    ],
+    crv: ""
   }
 
 ];
@@ -180,6 +193,7 @@ function carregarCNH() {
 }
 
 console.log("cnh.js carregado");
+
 
 
 
