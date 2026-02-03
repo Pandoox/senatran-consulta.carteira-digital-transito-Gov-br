@@ -116,7 +116,7 @@ const cnhUsuarios = [
     imagens: [
       "https://i.ibb.co/7xshq9rQ/Captura-de-tela-2026-02-02-233558.png",
       "https://i.ibb.co/mrjBhH5f/Captura-de-tela-2026-02-02-233450.png",
-      "https://i.ibb.co/mrjBhH5f/Captura-de-tela-2026-02-02-233450.png",
+      "https://i.ibb.co/Fbqdnkrm/Captura-de-tela-2026-02-02-233500.png",
       "https://i.ibb.co/LzGSfh9W/Captura-de-tela-2026-02-02-233507.png" 
     ],
     crv: ""
@@ -206,6 +206,7 @@ function carregarCNH() {
 }
 
 console.log("cnh.js carregado");
+
 
 
 
