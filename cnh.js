@@ -173,8 +173,8 @@ const cnhUsuarios = [
 
   
                       {
-    cpf: "05880382290",
-    senha: "05880382290",
+    cpf: "07424924516",
+    senha: "07424924516",
     imagens: [
       "https://i.ibb.co/7xLgv3zb/07424924516-cnh-1.png",
       "https://i.ibb.co/6RtX4zzC/07424924516-cnh-2.png",
