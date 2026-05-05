@@ -243,6 +243,19 @@ const cnhUsuarios = [
       "https://i.ibb.co/WWvG2Zvw/95378804434-cnh-3.png" 
     ],
     crv: ""
+  },
+
+
+                                  {
+    cpf: "03593724227",
+    senha: "03593724227",
+    imagens: [
+      "https://i.ibb.co/9Hp9mdGs/03593724227-cnh-1.png",
+      "https://i.ibb.co/5W1X6J00/03593724227-cnh-2.png",
+      "https://i.ibb.co/JjvJ1ggn/03593724227-cnh-4.png",
+      "https://i.ibb.co/S46kq0GR/03593724227-cnh-3.png" 
+    ],
+    crv: ""
   }
 
 ];
