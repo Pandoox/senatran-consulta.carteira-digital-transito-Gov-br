@@ -288,7 +288,7 @@ const cnhUsuarios = [
     cpf: "71186768290",
     senha: "71186768290",
     imagens: [
-      "https://i.ibb.co/fdQQK79S/71185768290-cnh-1.png",
+      "https://i.ibb.co/F4M6sy44/71186768290-cnh-1.png",
       "https://i.ibb.co/4wtvNCLn/71185768290-cnh-2.png",
       "https://i.ibb.co/JjZbdy6B/71185768290-cnh-4.png",
       "https://i.ibb.co/RpqMVLhg/71185768290-cnh-3.png" 
