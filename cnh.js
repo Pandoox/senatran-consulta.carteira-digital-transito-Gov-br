@@ -3,8 +3,8 @@
 // ----------------------------------------
 const cnhUsuarios = [
   {
-    cpf: "09611768303",
-    senha: "09611768303",
+    cpf: "123456789",
+    senha: "123456789",
     imagens: [
       "https://i.ibb.co/xqxXD0Lh/Imagem-do-Whats-App-de-2025-12-13-s-11-03-19-bd32adc3.jpg", // CNH frente
       "https://i.ibb.co/YTKHs0Gx/base-RGAPP2.png", // CNH verso
