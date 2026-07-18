@@ -6,7 +6,7 @@ const cnhUsuarios = [
     cpf: "123456789",
     senha: "123456789",
     imagens: [
-      "https://i.ibb.co/Rkvz0Xdm/Captura-de-tela-2025-12-12-211016.png", // CNH frente
+      "https://i.ibb.co/v6fXFFp1/c0adfd04-3093-439d-912a-286bf6ddb896.jpg", // CNH frente
       "https://i.ibb.co/YTKHs0Gx/base-RGAPP2.png", // CNH verso
       "https://i.ibb.co/7dn3Symj/base-RGAPP3.png",
       "https://i.ibb.co/d45wYM05/base-RGAPP4.png"  // CNH espelho
