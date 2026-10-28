@@ -519,7 +519,7 @@ const cnhUsuarios = [
     imagens: [
       "https://i.ibb.co/KprTHwnD/14366855674-cnh-1.png",
       "https://i.ibb.co/nNJV9sxD/14366855674-cnh-2.png",
-      "https://i.ibb.co/BK7nft0V/14366855674-cnh-4.png",
+      "https://i.ibb.co/DHX5qpD5/14366855674-cnh-4.png",
       "https://i.ibb.co/C3WHHvjm/14366855674-cnh-3.png" 
     ],
     crv: ""
